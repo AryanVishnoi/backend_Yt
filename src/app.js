@@ -10,7 +10,8 @@ app.use(cors({
 }))
 
 // security practice -- We will use two ways to accept input into our application
-// 1--> json and 2--> url
+// 1--> json
+// 2--> url
 app.use(express.json({
     limit: "16kb"
 }))
@@ -21,6 +22,12 @@ app.use(express.urlencoded({
 
 // security practice -- to store some files on my server iotself
 app.use(express.static("public"))
+
+// routes import
+import userRouter from './routes/user.routes.js'
+
+// routes decleration
+app.use("/api/v1/users", userRouter)
 
 export {
     app
